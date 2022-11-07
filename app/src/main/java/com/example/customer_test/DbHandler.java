@@ -23,8 +23,12 @@ public class DbHandler extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String sql="create table emp(id integer primary key,name text,age integer,salary integer)";
-        db.execSQL(sql);
+        String Emp_sql="create table emp(id integer primary key,name text,age integer,salary integer)";
+        String IO_sql="create table Incoming_order(id integer primary key,name text,Date text,price double)";
+        String OO_sql="create table outgoing_order(id integer primary key,name text,Date text,price double)";
+        db.execSQL(Emp_sql);
+        db.execSQL(IO_sql);
+        db.execSQL(OO_sql);
     }
 
     @Override
@@ -78,6 +82,118 @@ public class DbHandler extends SQLiteOpenHelper {
                 String age=c.getString(2);
                 String salary=c.getString(3);
                 Employee b=new Employee(Integer.parseInt(id),name,Integer.parseInt(age),Integer.parseInt(salary));
+                a.add(b);
+
+            }while (c.moveToNext());
+
+        }
+        return a;
+
+    }
+    ///////////////////////////////////////for Incoming orders
+    public void  add_Incoming_order(Incoming_order io)
+    {
+        ContentValues cv=new ContentValues();
+        cv.put("id",io.getId());
+        cv.put("name",io.getNAME());
+        cv.put("Date",io.getDate());
+        cv.put("price",io.getPrice());
+        long rid=db.insert("Incoming_order",null,cv);
+        if(rid<0)
+            Toast.makeText(context, "insert issue", Toast.LENGTH_SHORT).show();
+        else
+            Toast.makeText(context, "1 record inserted", Toast.LENGTH_SHORT).show();
+
+    }
+    public void update_incomingorder(Incoming_order e)
+    {
+        ContentValues cv=new ContentValues();
+        cv.put("id",e.getId());
+        cv.put("name",e.getNAME());
+        cv.put("Date",e.getDate());
+        cv.put("price",e.getPrice());
+        long nor=db.update("Incoming_order",cv,"id="+e.getId(),null); //number of records
+        Toast.makeText(context, nor+"records updated", Toast.LENGTH_SHORT).show();
+
+    }
+
+    public void delete_Incoming_order(Employee e)
+    {
+        long nor=db.delete("Incoming_order","id="+e.getId(),null);
+        Toast.makeText(context, nor+"records deleted", Toast.LENGTH_SHORT).show();
+
+    }
+
+    public ArrayList view_Incoming_order()
+    {
+        Cursor c=db.query("Incoming_order",null,null,null,null,null,null);
+        c.moveToFirst();
+        ArrayList a=new ArrayList<>();
+
+        if(c.getCount()>0)
+        {
+            do {
+                String id=c.getString(0);
+                String name=c.getString(1);
+                String Date=c.getString(2);
+                String price=c.getString(3);
+                Incoming_order b=new Incoming_order(Integer.parseInt(id),name,(Date),Double.parseDouble(price));
+                a.add(b);
+
+            }while (c.moveToNext());
+
+        }
+        return a;
+
+    }
+    /////////////////outgoing order
+    public void  add_outging_order(Outgoing_order io)
+    {
+        ContentValues cv=new ContentValues();
+        cv.put("id",io.getId());
+        cv.put("name",io.getNAME());
+        cv.put("Date",io.getDate());
+        cv.put("price",io.getPrice());
+        long rid=db.insert("outgoing_order",null,cv);
+        if(rid<0)
+            Toast.makeText(context, "insert issue", Toast.LENGTH_SHORT).show();
+        else
+            Toast.makeText(context, "1 record inserted", Toast.LENGTH_SHORT).show();
+
+    }
+    public void update_outgoingorder(Outgoing_order e)
+    {
+        ContentValues cv=new ContentValues();
+        cv.put("id",e.getId());
+        cv.put("name",e.getNAME());
+        cv.put("Date",e.getDate());
+        cv.put("price",e.getPrice());
+        long nor=db.update("outgoing_order",cv,"id="+e.getId(),null); //number of records
+        Toast.makeText(context, nor+"records updated", Toast.LENGTH_SHORT).show();
+
+    }
+
+    public void delete_outgoingorder(Outgoing_order e)
+    {
+        long nor=db.delete("outgoing_order","id="+e.getId(),null);
+        Toast.makeText(context, nor+"records deleted", Toast.LENGTH_SHORT).show();
+
+    }
+
+    public ArrayList view_outgoing_order()
+    {
+        Cursor c=db.query("outgoing_order",null,null,null,null,null,null);
+        c.moveToFirst();
+        ArrayList a=new ArrayList<>();
+
+        if(c.getCount()>0)
+        {
+            do {
+                String id=c.getString(0);
+                String name=c.getString(1);
+                String Date=c.getString(2);
+                String price=c.getString(3);
+                Outgoing_order b=new Outgoing_order(Integer.parseInt(id),name,(Date),Double.parseDouble(price));
                 a.add(b);
 
             }while (c.moveToNext());
