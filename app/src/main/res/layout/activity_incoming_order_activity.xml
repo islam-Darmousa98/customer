@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context=".MainActivity">
+
+    <EditText
+        android:id="@+id/Order_id"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter id for order"
+        android:textSize="20sp"
+        android:gravity="center_horizontal"/>
+    <EditText
+        android:id="@+id/Order__name"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter name for order"
+        android:textSize="20sp"
+        android:gravity="center_horizontal"/>
+    <EditText
+        android:id="@+id/Order_date"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter Date for order(dd/mm/yyyy)"
+        android:textSize="20sp"
+        android:gravity="center_horizontal"/>
+    <EditText
+        android:id="@+id/Order_price"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter price for order"
+        android:textSize="20sp"
+        android:gravity="center_horizontal"/>
+
+    <Button
+        android:id="@+id/btn_add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="add"/>
+    <Button
+        android:id="@+id/btn_update"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="update"/>
+    <Button
+        android:id="@+id/btn_read"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="read"/>
+    <Button
+        android:id="@+id/btn_delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="delete"/>
+    <TextView
+        android:id="@+id/tvData"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+
+        android:textSize="20sp"
+        android:gravity="center_horizontal"/>
+    <ListView
+        android:id="@+id/lvData"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+
+        android:textSize="20sp"
+        android:gravity="center_horizontal"/>
+
+</LinearLayout>

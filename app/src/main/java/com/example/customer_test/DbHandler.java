@@ -117,7 +117,7 @@ public class DbHandler extends SQLiteOpenHelper {
 
     }
 
-    public void delete_Incoming_order(Employee e)
+    public void delete_Incoming_order(Incoming_order e)
     {
         long nor=db.delete("Incoming_order","id="+e.getId(),null);
         Toast.makeText(context, nor+"records deleted", Toast.LENGTH_SHORT).show();
