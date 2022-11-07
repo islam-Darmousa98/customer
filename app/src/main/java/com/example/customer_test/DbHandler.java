@@ -23,16 +23,15 @@ public class DbHandler extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String Emp_sql="create table emp(id integer primary key,name text,age integer,salary integer)";
-        String IO_sql="create table Incoming_order(id integer primary key,name text,Date text,price double)";
-        String OO_sql="create table outgoing_order(id integer primary key,name text,Date text,price double)";
-        db.execSQL(Emp_sql);
-        db.execSQL(IO_sql);
-        db.execSQL(OO_sql);
+        String Emp_sql="create table emp(id integer primary key,name text,age integer,salary integer)"; db.execSQL(Emp_sql);
+        String IO_sql="create table Incoming_order(id integer primary key,name text,Date text,price double)"; db.execSQL(IO_sql);
+        String OO_sql="create table outgoing_order(id integer primary key,name text,Date text,price double)"; db.execSQL(OO_sql);
+        
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
+
 
     }
     public void  addEmployee(Employee e)

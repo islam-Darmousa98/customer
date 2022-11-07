@@ -33,5 +33,12 @@ public class Main_Page extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        btn_outgoing_order.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(Main_Page.this,OutGoing_order_Activity.class);
+                startActivity(intent);
+            }
+        });
     }
 }
